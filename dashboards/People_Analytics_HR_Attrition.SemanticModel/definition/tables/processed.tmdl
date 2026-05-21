@@ -1,0 +1,612 @@
+table processed
+	lineageTag: f9da5801-01df-4ab8-a644-6e6bbaf66ee1
+
+	/// Contagem total de colaboradores
+	measure 'Total Colaboradores' = COUNTROWS(processed)
+		formatString: #,##0
+		displayFolder: KPIs Gerais
+		lineageTag: 7dd8c303-cad0-4b4d-834d-900f8d1b88eb
+
+	/// Numero de colaboradores que sairam
+	measure 'Total Saidas' = SUM(processed[Saida])
+		formatString: #,##0
+		displayFolder: KPIs Gerais
+		lineageTag: 6e1d07d0-954c-477e-92c3-da83a9f2680d
+
+	/// Percentagem de colaboradores que sairam
+	measure 'Taxa Turnover %' = DIVIDE(SUM(processed[Saida]), COUNTROWS(processed), 0) * 100
+		formatString: 0.0"%"
+		displayFolder: KPIs Gerais
+		lineageTag: f327256c-3c7f-4c7d-85eb-958ae2c7f4a6
+
+	/// Colaboradores que permaneceram
+	measure 'Total Ficaram' = COUNTROWS(processed) - SUM(processed[Saida])
+		formatString: #,##0
+		displayFolder: KPIs Gerais
+		lineageTag: 75f06b38-5325-4143-af64-d9ef50757f82
+
+	/// Rendimento mensal medio
+	measure 'Salario Medio' = AVERAGE(processed[RendimentoMensal])
+		formatString: #,##0
+		displayFolder: Compensacao
+		lineageTag: 51976bde-110a-43fe-a8e9-87b289328a5d
+
+	/// Salario medio de quem saiu
+	measure 'Salario Medio Saidas' = CALCULATE(AVERAGE(processed[RendimentoMensal]), processed[Saida] = 1)
+		formatString: #,##0
+		displayFolder: Compensacao
+		lineageTag: 0223b816-5d14-4e3c-a982-5e99b6030c2a
+
+	/// Salario medio de quem ficou
+	measure 'Salario Medio Ficaram' = CALCULATE(AVERAGE(processed[RendimentoMensal]), processed[Saida] = 0)
+		formatString: #,##0
+		displayFolder: Compensacao
+		lineageTag: 55c75512-7886-4fc3-9858-337b97a2e0bd
+
+	/// Diferenca percentual de salario entre quem ficou e quem saiu
+	measure 'Gap Salarial Saida %' =
+			VAR SalarioSaiu = CALCULATE(AVERAGE(processed[RendimentoMensal]), processed[Saida] = 1)
+			VAR SalarioFicou = CALCULATE(AVERAGE(processed[RendimentoMensal]), processed[Saida] = 0)
+			RETURN DIVIDE(SalarioFicou - SalarioSaiu, SalarioFicou, 0) * 100
+		formatString: 0.0"%"
+		displayFolder: Compensacao
+		lineageTag: 66e68947-06ce-4a70-86f7-061b1156109d
+
+	/// Media de satisfacao com o ambiente (1-4)
+	measure 'Media Satisfacao Ambiente' = AVERAGE(processed[SatisfacaoAmbiente])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: c9f6d6be-e4ad-4078-9008-8e94ffcabc49
+
+	/// Media de satisfacao com o cargo (1-4)
+	measure 'Media Satisfacao Cargo' = AVERAGE(processed[SatisfacaoCargo])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: 662860ab-53c2-4083-b641-837b8c4573a8
+
+	/// Media de envolvimento com o cargo (1-4)
+	measure 'Media Envolvimento' = AVERAGE(processed[EnvolvimentoCargo])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: 7979aced-6fb2-4933-a3e0-afcb3190d877
+
+	/// Media de equilibrio vida-trabalho (1-4)
+	measure 'Media Equilibrio Vida-Trabalho' = AVERAGE(processed[EquilibrioVidaTrabalho])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: 7464cede-6e73-4d2c-86a5-d76d92cbdf7f
+
+	/// Media de satisfacao com relacionamentos (1-4)
+	measure 'Media Satisfacao Relacionamento' = AVERAGE(processed[SatisfacaoRelacionamento])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: ca0bfe1b-dbc3-43c3-add9-4f3c8ba48269
+
+	/// Satisfacao geral media (composta)
+	measure 'Satisfacao Geral Media' = AVERAGE(processed[SatisfacaoMedia])
+		formatString: 0.00
+		displayFolder: Satisfacao
+		lineageTag: a3009102-9d80-4225-857e-9bd21328795c
+
+	/// Idade media dos colaboradores
+	measure 'Idade Media' = AVERAGE(processed[Idade])
+		formatString: 0.0
+		displayFolder: Demografia
+		lineageTag: 22b3f872-00b9-4344-9902-bb5487377a10
+
+	/// Distancia media casa-trabalho em km
+	measure 'Distancia Media Casa' = AVERAGE(processed[DistanciaCasa])
+		formatString: 0.0
+		displayFolder: Demografia
+		lineageTag: ac1bdca2-3036-40c7-9067-8f737fcb1325
+
+	/// Media de anos na empresa
+	measure 'Media Anos Empresa' = AVERAGE(processed[AnosNaEmpresa])
+		formatString: 0.0
+		displayFolder: Demografia
+		lineageTag: ade1b48c-a101-4d70-a59a-3abb69cca16b
+
+	/// Media de anos desde ultima promocao
+	measure 'Media Anos Sem Promocao' = AVERAGE(processed[AnosDesdeUltimaPromocao])
+		formatString: 0.0
+		displayFolder: Demografia
+		lineageTag: b65ee4d4-930c-4df4-a928-781e8d425646
+
+	/// Percentagem de colaboradores que fazem horas extra
+	measure '% Horas Extra' = DIVIDE(CALCULATE(COUNTROWS(processed), processed[HorasExtra] = "Sim"), COUNTROWS(processed), 0) * 100
+		formatString: 0.0"%"
+		displayFolder: Demografia
+		lineageTag: 4b71dcc6-ed93-4407-b82a-1403d2605a94
+
+	/// Colaboradores classificados como alto risco pelo modelo ML
+	measure 'Total Alto Risco' = CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Alto")
+		formatString: #,##0
+		displayFolder: Risco ML
+		lineageTag: abdd931d-f72b-46ae-b32f-0cb6d224c531
+
+	/// Colaboradores classificados como medio risco
+	measure 'Total Medio Risco' = CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Medio")
+		formatString: #,##0
+		displayFolder: Risco ML
+		lineageTag: 2c13c202-1a5a-4ac8-aa4e-26242068e10e
+
+	/// Colaboradores classificados como baixo risco
+	measure 'Total Baixo Risco' = CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Baixo")
+		formatString: #,##0
+		displayFolder: Risco ML
+		lineageTag: 54ba81bc-326e-4a70-bcc3-7cf965076c1c
+
+	/// Percentagem de colaboradores em alto risco
+	measure '% Alto Risco' = DIVIDE(CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Alto"), COUNTROWS(processed), 0) * 100
+		formatString: 0.0"%"
+		displayFolder: Risco ML
+		lineageTag: cf5321dd-6612-42e5-b5b1-339b365baaeb
+
+	/// Probabilidade media de saida (modelo ML)
+	measure 'Risco Medio Geral' = AVERAGE(processed[RiscoSaida_Prob])
+		formatString: 0.0"%"
+		displayFolder: Risco ML
+		lineageTag: 438b40aa-6cc5-4931-bafb-4fc1d425e07f
+
+	/// Taxa de turnover real entre os classificados como alto risco
+	measure 'Turnover Real Alto Risco %' = CALCULATE(AVERAGE(processed[Saida]), processed[RiscoSaida_Classe] = "Alto") * 100
+		formatString: 0.0"%"
+		displayFolder: Risco ML
+		lineageTag: 9a7e2bb7-0daf-42a1-98f8-802fe8cff848
+
+	/// Custo estimado de turnover (salario medio x 1.5 x saidas)
+	measure 'Custo Estimado Turnover' =
+			VAR SalarioMedio = AVERAGE(processed[RendimentoMensal])
+			VAR TotalSaidas = SUM(processed[Saida])
+			RETURN SalarioMedio * 1.5 * TotalSaidas
+		formatString: #,##0
+		displayFolder: Risco ML
+		lineageTag: 50b349ed-d4df-44d6-88ab-e5ef24b97224
+
+	column Idade
+		dataType: int64
+		formatString: 0
+		lineageTag: 856c1294-0e16-483b-8c7a-3eeb2ba4d057
+		summarizeBy: sum
+		sourceColumn: Idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saida
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a72785b-a890-4175-b895-5b0df3aaa307
+		summarizeBy: sum
+		sourceColumn: Saida
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrequenciaViagem
+		dataType: string
+		lineageTag: ad5b0956-5cd8-4e0d-9dc7-3f18877fb333
+		summarizeBy: none
+		sourceColumn: FrequenciaViagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxaDiaria
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c9e479b-b93b-4a5a-8f78-18554294a1f9
+		summarizeBy: sum
+		sourceColumn: TaxaDiaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departamento
+		dataType: string
+		lineageTag: a9d64a60-c8c7-4657-a1e3-4e713dbf542e
+		summarizeBy: none
+		sourceColumn: Departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DistanciaCasa
+		dataType: int64
+		formatString: 0
+		lineageTag: f14545ee-1dd0-4f78-889b-7136bc7f36ca
+		summarizeBy: sum
+		sourceColumn: DistanciaCasa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Escolaridade
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f1ae542-8dde-4cfa-b247-0c9c72471a5d
+		summarizeBy: sum
+		sourceColumn: Escolaridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column AreaFormacao
+		dataType: string
+		lineageTag: 70378009-759f-4752-8673-cc54cb9bb489
+		summarizeBy: none
+		sourceColumn: AreaFormacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoAmbiente
+		dataType: int64
+		formatString: 0
+		lineageTag: 47d3e8ee-ae3f-4349-8fa1-f3adca76e38b
+		summarizeBy: sum
+		sourceColumn: SatisfacaoAmbiente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: bc8fee13-a035-4589-80a5-e508fdc40107
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxaHora
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fc6fa45-e03b-4780-a271-db57b13db733
+		summarizeBy: sum
+		sourceColumn: TaxaHora
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnvolvimentoCargo
+		dataType: int64
+		formatString: 0
+		lineageTag: f421106c-6124-4b4d-803e-8c6906335d8e
+		summarizeBy: sum
+		sourceColumn: EnvolvimentoCargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelCargo
+		dataType: int64
+		formatString: 0
+		lineageTag: 269bf594-199d-4439-ad9d-aeb45f30eebf
+		summarizeBy: sum
+		sourceColumn: NivelCargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: cd3f4ad6-4e0c-4ddd-9a8b-2c41fee535b0
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoCargo
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c6e409b-a906-4a1d-9922-8f9d50d2f1d8
+		summarizeBy: sum
+		sourceColumn: SatisfacaoCargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoCivil
+		dataType: string
+		lineageTag: 7cf814a2-5f12-41c9-8273-1213707cf6e9
+		summarizeBy: none
+		sourceColumn: EstadoCivil
+
+		annotation SummarizationSetBy = Automatic
+
+	column RendimentoMensal
+		dataType: int64
+		formatString: 0
+		lineageTag: 89a37b1a-ebf2-4a3a-9248-21b67f87ad83
+		summarizeBy: sum
+		sourceColumn: RendimentoMensal
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxaMensal
+		dataType: int64
+		formatString: 0
+		lineageTag: 99f9d797-1f05-438e-ab5e-d3004ae6f425
+		summarizeBy: sum
+		sourceColumn: TaxaMensal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumEmpresasAnteriores
+		dataType: int64
+		formatString: 0
+		lineageTag: 54f29ae9-06a6-486a-96a1-1be6ecb2d14b
+		summarizeBy: sum
+		sourceColumn: NumEmpresasAnteriores
+
+		annotation SummarizationSetBy = Automatic
+
+	column HorasExtra
+		dataType: string
+		lineageTag: 3fc24a88-ca26-46e0-9397-11f94aa55e69
+		summarizeBy: none
+		sourceColumn: HorasExtra
+
+		annotation SummarizationSetBy = Automatic
+
+	column PercentAumentoSalarial
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bd1afab-d884-422f-9865-220aa149383b
+		summarizeBy: sum
+		sourceColumn: PercentAumentoSalarial
+
+		annotation SummarizationSetBy = Automatic
+
+	column AvaliacaoDesempenho
+		dataType: int64
+		formatString: 0
+		lineageTag: 32f4e501-f0fd-4597-afa5-6afe3f0ba8f6
+		summarizeBy: sum
+		sourceColumn: AvaliacaoDesempenho
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoRelacionamento
+		dataType: int64
+		formatString: 0
+		lineageTag: 119ab072-ea74-496e-9616-f5d643711c99
+		summarizeBy: sum
+		sourceColumn: SatisfacaoRelacionamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelOpcaoAccoes
+		dataType: int64
+		formatString: 0
+		lineageTag: 69c56153-8bae-4ddd-a0db-8639ccee4971
+		summarizeBy: sum
+		sourceColumn: NivelOpcaoAccoes
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnosExperienciaTotal
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b15115e-cb92-499a-98e6-719d3f218134
+		summarizeBy: sum
+		sourceColumn: AnosExperienciaTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormacaoUltimoAno
+		dataType: int64
+		formatString: 0
+		lineageTag: 9981abb1-6be8-45b1-af41-e027e74eed75
+		summarizeBy: sum
+		sourceColumn: FormacaoUltimoAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquilibrioVidaTrabalho
+		dataType: int64
+		formatString: 0
+		lineageTag: 65c65aab-f909-4771-947a-984a043eb47e
+		summarizeBy: sum
+		sourceColumn: EquilibrioVidaTrabalho
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnosNaEmpresa
+		dataType: int64
+		formatString: 0
+		lineageTag: 41ccd80f-aeba-4c35-870b-f2cd8a5d8c84
+		summarizeBy: sum
+		sourceColumn: AnosNaEmpresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnosNoCargoActual
+		dataType: int64
+		formatString: 0
+		lineageTag: 302a7f3d-236e-4d59-a776-e477e8ddb0a8
+		summarizeBy: sum
+		sourceColumn: AnosNoCargoActual
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnosDesdeUltimaPromocao
+		dataType: int64
+		formatString: 0
+		lineageTag: e15db196-51f0-4474-bc65-9faf1d570a48
+		summarizeBy: sum
+		sourceColumn: AnosDesdeUltimaPromocao
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnosComGestorActual
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fda42df-5c58-478c-b7b0-b33a0c3c0b45
+		summarizeBy: sum
+		sourceColumn: AnosComGestorActual
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoAmbiente_Texto
+		dataType: string
+		lineageTag: bdb48771-e715-4393-bb2a-b7e05cb4d774
+		summarizeBy: none
+		sourceColumn: SatisfacaoAmbiente_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoCargo_Texto
+		dataType: string
+		lineageTag: 799644d9-2a73-4286-842a-a0ef56a91b61
+		summarizeBy: none
+		sourceColumn: SatisfacaoCargo_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnvolvimentoCargo_Texto
+		dataType: string
+		lineageTag: a873e204-b63b-4327-a463-7260621acfce
+		summarizeBy: none
+		sourceColumn: EnvolvimentoCargo_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfacaoRelacionamento_Texto
+		dataType: string
+		lineageTag: 0361d80e-c3aa-43b3-9a69-511b4a7d50e3
+		summarizeBy: none
+		sourceColumn: SatisfacaoRelacionamento_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquilibrioVidaTrabalho_Texto
+		dataType: string
+		lineageTag: 37f9ae3c-4a68-4303-8663-26a08cddf75f
+		summarizeBy: none
+		sourceColumn: EquilibrioVidaTrabalho_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column AvaliacaoDesempenho_Texto
+		dataType: string
+		lineageTag: a1c4fb2d-ae20-4b61-85ab-aac8b3212f6b
+		summarizeBy: none
+		sourceColumn: AvaliacaoDesempenho_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Escolaridade_Texto
+		dataType: string
+		lineageTag: d967c4a7-fb17-4919-b5fa-c4d7a148995d
+		summarizeBy: none
+		sourceColumn: Escolaridade_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column RendimentoMensal_Log
+		dataType: double
+		lineageTag: 6af6db91-4e37-4ae0-b3fc-406cc3e1cdfb
+		summarizeBy: sum
+		sourceColumn: RendimentoMensal_Log
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FaixaEtaria
+		dataType: string
+		lineageTag: 935ee769-63c4-4c49-9f49-eae9965c42a6
+		summarizeBy: none
+		sourceColumn: FaixaEtaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaSalarial
+		dataType: string
+		lineageTag: beb69fc7-30a1-4de5-a8a0-7c28eebc99db
+		summarizeBy: none
+		sourceColumn: FaixaSalarial
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaDistancia
+		dataType: string
+		lineageTag: b5fff75e-25fb-4fc3-9987-5d0fd68a142d
+		summarizeBy: none
+		sourceColumn: FaixaDistancia
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaAntiguidade
+		dataType: string
+		lineageTag: efab9c75-00dc-41dd-8d8a-9f63a60fcd76
+		summarizeBy: none
+		sourceColumn: FaixaAntiguidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalarioPorNivel
+		dataType: double
+		lineageTag: d2a7e60e-bf48-4327-be4e-281a67ee4360
+		summarizeBy: sum
+		sourceColumn: SalarioPorNivel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EstagnacaoRelativa
+		dataType: double
+		lineageTag: d669e057-a35a-4d3d-a756-95261c9e6402
+		summarizeBy: sum
+		sourceColumn: EstagnacaoRelativa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProporcaoCarreiraEmpresa
+		dataType: double
+		lineageTag: 5178cbc6-0022-4197-a887-7d31925a8f8f
+		summarizeBy: sum
+		sourceColumn: ProporcaoCarreiraEmpresa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SatisfacaoMedia
+		dataType: double
+		lineageTag: 74ce3406-0154-41f1-8532-8819a38dc528
+		summarizeBy: sum
+		sourceColumn: SatisfacaoMedia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PressaoTrabalho
+		dataType: int64
+		formatString: 0
+		lineageTag: 4069e557-df6e-478b-b84f-deef8f9394f9
+		summarizeBy: sum
+		sourceColumn: PressaoTrabalho
+
+		annotation SummarizationSetBy = Automatic
+
+	column RiscoSaida_Prob
+		dataType: double
+		lineageTag: f800694c-d520-4108-aaab-6e63233f4d66
+		summarizeBy: sum
+		sourceColumn: RiscoSaida_Prob
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RiscoSaida_Classe
+		dataType: string
+		lineageTag: a8d0051a-26b8-4b1d-accf-4b6c4a312e77
+		summarizeBy: none
+		sourceColumn: RiscoSaida_Classe
+
+		annotation SummarizationSetBy = Automatic
+
+	partition processed = m
+		mode: import
+		source =
+				let
+				    Fonte = Parquet.Document(File.Contents("C:\power bi projeto legado do leo\dados\processed\hr_attrition_scored.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Table
+

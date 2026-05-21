@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "People_Analytics_HR_Attrition"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6174ab5b-9b7b-4d6b-8140-081d7ea0eed9"
+  }
+}
