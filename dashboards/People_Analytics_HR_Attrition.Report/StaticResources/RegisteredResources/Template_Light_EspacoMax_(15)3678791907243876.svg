@@ -1,0 +1,148 @@
+<svg id="pbi-template" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+            <!-- Efeito de Sombra para dar profundidade aos cartões -->
+            <defs>
+                <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.04"/>
+                </filter>
+                <clipPath id="clip-card-1">
+                    <rect x="220" y="70" width="255" height="90" rx="8"/>
+                </clipPath>
+                <clipPath id="clip-card-2">
+                    <rect x="485" y="70" width="255" height="90" rx="8"/>
+                </clipPath>
+                <clipPath id="clip-card-3">
+                    <rect x="750" y="70" width="255" height="90" rx="8"/>
+                </clipPath>
+                <clipPath id="clip-card-4">
+                    <rect x="1015" y="70" width="255" height="90" rx="8"/>
+                </clipPath>
+            </defs>
+
+            <!-- Background do Canvas Principal -->
+            <rect width="1280" height="720" fill="#f3f4f6"/>
+
+            <!-- Barra Lateral Esquerda (Sidebar: Largura 210) -->
+            <rect x="0" y="0" width="210" height="720" fill="#ffffff"/>
+            <line x1="210" y1="0" x2="210" y2="720" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Header da Barra Lateral (Ícone de People Analytics Customizado) -->
+            <g>
+                <!-- Fundo do ícone (Rounded Square no tom verde do painel) -->
+                <rect x="15" y="21" width="26" height="26" rx="6" fill="#0B5345"/>
+                <!-- Ícone de Pessoas + Analytics em Branco (Traços Finos e Elegantes) -->
+                <g stroke="#ffffff" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(15, 21)">
+                    <g transform="translate(4, 4)">
+                        <!-- Silhueta Humana Simplificada -->
+                        <circle cx="6" cy="5" r="2.5"/>
+                        <path d="M1 15v-1a2.5 2.5 0 0 1 2.5-2.5h5A2.5 2.5 0 0 1 11 14v1"/>
+                        <!-- Duas barras crescentes (Analytics) -->
+                        <line x1="14" y1="15" x2="14" y2="8"/>
+                        <line x1="17" y1="15" x2="17" y2="4"/>
+                    </g>
+                </g>
+            </g>
+            <text x="50" y="39" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#1f2937">People Analytics</text>
+            <line x1="15" y1="70" x2="195" y2="70" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Guias para os Segmentadores (Igual ao P3) -->
+            <text x="15" y="120" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280" text-transform="uppercase" letter-spacing="1">Departamento</text>
+
+            <text x="15" y="200" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280" text-transform="uppercase" letter-spacing="1">Gênero</text>
+
+            <text x="15" y="280" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280" text-transform="uppercase" letter-spacing="1">Horas Extras</text>
+
+            <line x1="15" y1="360" x2="195" y2="360" stroke="#e5e7eb" stroke-width="1"/>
+
+
+
+            <!-- Botão de Limpar Filtros (Base no Template) -->
+            <rect x="15" y="650" width="180" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Top Header Area (Altura: 60) -->
+            <rect x="210" y="0" width="1070" height="60" fill="#ffffff"/>
+            <line x1="210" y1="60" x2="1280" y2="60" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Cabeçalho Tipográfico Minimalista (Estilo Tufte / Modern SaaS) -->
+            <g>
+                <!-- Categoria Superior Fina -->
+                <text x="230" y="24" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0B5345" letter-spacing="1.5">DASHBOARD ANALÍTICO</text>
+                <!-- Título Principal Sólido e Elegante -->
+                <text x="230" y="45" font-family="Inter, sans-serif" font-size="19" font-weight="600" fill="#1f2937" letter-spacing="-0.3">Visão Geral de Risco</text>
+            </g>
+
+            <!-- ==============================
+                 KPIs (Cards) - Y: 70, H: 90
+                 Largura: 255
+                 ============================== -->
+
+            <!-- Card 1: Total de Clientes -->
+            <rect x="220" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="220" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-1)"/>
+            <rect x="220" y="70" width="255" height="20" fill="#0B5345" opacity="0.04" clip-path="url(#clip-card-1)"/>
+            <text x="235" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280" letter-spacing="0.5">TAXA TURNOVER (%)</text>
+            <g transform="translate(435, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="17 1 21 5 17 9"/>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                <polyline points="7 23 3 19 7 15"/>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </g>
+
+            <!-- Card 2: Média de Risco -->
+            <rect x="485" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="485" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-2)"/>
+            <rect x="485" y="70" width="255" height="20" fill="#0B5345" opacity="0.04" clip-path="url(#clip-card-2)"/>
+            <text x="500" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280" letter-spacing="0.5">TOTAL ALTO RISCO</text>
+            <g transform="translate(700, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                </path>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </g>
+
+            <!-- Card 3: Volume Total -->
+            <rect x="750" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="750" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-3)"/>
+            <rect x="750" y="70" width="255" height="20" fill="#0B5345" opacity="0.04" clip-path="url(#clip-card-3)"/>
+            <text x="765" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280" letter-spacing="0.5">TOTAL SAÍDAS</text>
+            <g transform="translate(965, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+            </g>
+
+            <!-- Card 4: Volume em Risco -->
+            <rect x="1015" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="1015" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-4)"/>
+            <rect x="1015" y="70" width="255" height="20" fill="#0B5345" opacity="0.04" clip-path="url(#clip-card-4)"/>
+            <text x="1030" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280" letter-spacing="0.5">TOTAL COLABORADORES</text>
+            <g transform="translate(1230, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </g>
+
+            <!-- ==============================
+                 Área de Gráficos - Grid Simétrico 2x2 (4 Gráficos Iguais)
+                 Dimensões de cada gráfico: W: 520, H: 265
+                 ============================== -->
+
+            <!-- Grid Linha 1 (Topo) -->
+            <!-- 1. Superior Esquerdo -->
+            <rect x="220" y="170" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+
+            <!-- 2. Superior Direito -->
+            <rect x="750" y="170" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+
+            <!-- Grid Linha 2 (Base) -->
+            <!-- 3. Inferior Esquerdo -->
+            <rect x="220" y="445" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+
+            <!-- 4. Inferior Direito -->
+            <rect x="750" y="445" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+
+        </svg>

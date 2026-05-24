@@ -1,0 +1,652 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Limpar_tudo_1",
+  "name": "d1be76614a3c513c7821",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "bc2a48f52ece1f9a4883",
+    "sections": {
+      "bc2a48f52ece1f9a4883": {
+        "visualContainers": {
+          "e7100cc701e381afd6c2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f6819e03448df1342bc2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c0cc59fda09db128264b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "118cd18d94b5e85b6f5e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Alto Risco"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Alto Risco"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0c0fdf35276beb3fd52c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4784f8b6b82a8729afbb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Saidas"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Saidas"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "bd4983a10f52597b166e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "eb36fe3bf2b075ce05d2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Colaboradores"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Colaboradores"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "eebc8cbfa8ee7dfee339": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f0661d87809b191a5e48",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "RiscoSaida_Classe"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d45989fc97b5d5f16983",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Colaboradores"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Total Colaboradores"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "RiscoSaida_Classe"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "3d0c320548c25ad750cf": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "df0159a176142f45b9d9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Cargo"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3b3f0e712178528d051a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Cargo"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "312ddb10f1160af392ee": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "be893cc27dd58be3eae7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "FaixaEtaria"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "56f58c8ed788a59d9d4d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "FaixaEtaria"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ff2931900edde1be9cea": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f8f63d9804b2ea65c947",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Departamento"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9ca52c4b55bee6a820bc",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Taxa Turnover %"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Departamento"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "72551fa40401b6526d0f": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "dfb8a164d3e3b7b9b5bd",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Departamento"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Departamento"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "14fde29c92d10ae7c048": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3ef5ad362190fcede3a1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Genero"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "Genero"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "e8e3e15bc397612c656c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "fbda23b48a7d07079ad3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "HorasExtra"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "HorasExtra"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ab979b00576a47d1e450": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b8fb4e9bb192bbf3c620",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "processed"
+                        }
+                      },
+                      "Property": "HTML Insights Dashboard"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+              "objects": {}
+            }
+          },
+          "c9955a5853363b451885": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        }
+      }
+    },
+    "objects": {}
+  }
+}

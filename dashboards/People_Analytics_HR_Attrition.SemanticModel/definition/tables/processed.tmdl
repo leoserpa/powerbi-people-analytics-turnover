@@ -163,6 +163,69 @@ table processed
 		displayFolder: Risco ML
 		lineageTag: 50b349ed-d4df-44d6-88ab-e5ef24b97224
 
+	/// Cor condicional: verde escuro na barra com maior turnover, cinza nas restantes. Funciona com qualquer filtro.
+	measure 'Cor Destaque Barra' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[Cargo]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: b3ed8f72-62a0-41f5-9171-ddd656d31e2f
+
+	/// Cor condicional para grafico de Faixa Etaria: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque FaixaEtaria' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[FaixaEtaria]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 48dadc2a-347c-4e71-a830-9250493ede5d
+
+	/// Cor condicional para grafico de Departamento: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque Departamento' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[Departamento]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 628902f6-186b-4e08-8fa6-d0e2a2b25bb8
+
+	/// Texto de insight dinamico que muda com os filtros aplicados
+	measure 'Insight Resumo' =
+			VAR TotalColab = COUNTROWS(processed)
+			VAR TotalSaidas = SUM(processed[Saida])
+			VAR Taxa = DIVIDE(TotalSaidas, TotalColab, 0) * 100
+			VAR AltoRisco = CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Alto")
+			RETURN
+			"De " & TotalColab & " colaboradores, " & TotalSaidas & " sairam (" & FORMAT(Taxa, "0.0") & "%). Actualmente " & AltoRisco & " estao em alto risco de saida."
+		displayFolder: Formatacao
+		lineageTag: ec818fe9-b1fd-46db-9249-e1ad5f85fc70
+
+	/// HTML com insights dinamicos - portugues BR corrigido
+	measure 'HTML Insights Dashboard' =
+			VAR TotalColab = COUNTROWS(processed)
+			VAR TotalSaidas = SUM(processed[Saida])
+			VAR Taxa = DIVIDE(TotalSaidas, TotalColab, 0) * 100
+			VAR AltoRisco = CALCULATE(COUNTROWS(processed), processed[RiscoSaida_Classe] = "Alto")
+			VAR CargoTop = TOPN(1, SUMMARIZE(processed, processed[Cargo], "TX", [Taxa Turnover %]), [TX], DESC)
+			VAR NomeCargo = MAXX(CargoTop, processed[Cargo])
+			VAR TaxaCargo = MAXX(CargoTop, [TX])
+			VAR DeptTop = TOPN(1, SUMMARIZE(processed, processed[Departamento], "TX", [Taxa Turnover %]), [TX], DESC)
+			VAR NomeDept = MAXX(DeptTop, processed[Departamento])
+			VAR TurnoverHE = CALCULATE([Taxa Turnover %], processed[HorasExtra] = "Sim")
+			RETURN
+			"<div style='font-family:Segoe UI,sans-serif;padding:10px;line-height:1.7'>
+			<p style='font-size:10px;color:#0B5345;font-weight:700;margin:0 0 6px 0;text-transform:uppercase;letter-spacing:0.5px'>&#128161; Insights</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; <b>" & NomeCargo & "</b> lidera o turnover com <b>" & FORMAT(TaxaCargo, "0.0") & "%</b></p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; <b>" & NomeDept & "</b> e o departamento mais critico</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Quem faz horas extras tem <b>" & FORMAT(TurnoverHE, "0.0") & "%</b> de turnover</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; <b>" & AltoRisco & "</b> colaboradores em alto risco</p>
+			<hr style='border:none;border-top:1px solid #E0E0E0;margin:8px 0'>
+			<p style='font-size:9px;color:#999;margin:0'>Dados atualizados com filtros</p>
+			</div>"
+		displayFolder: Formatacao
+		lineageTag: 90006236-9908-4783-bc07-f3eab4979123
+
 	column Idade
 		dataType: int64
 		formatString: 0
