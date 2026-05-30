@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "processed.RiscoSaida_Classe",
-              "nativeQueryRef": "RiscoSaida_Classe",
-              "active": true
+              "nativeQueryRef": "Nível de Risco",
+              "active": true,
+              "displayName": "Nível de Risco"
             }
           ]
         },

@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Template_Light_EspacoMax (15).svg'"
+                    "Value": "'template_visao_geral_de_risco (3).svg'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Template_Light_EspacoMax_(15)3678791907243876.svg"
+                    "ItemName": "template_visao_geral_de_risco_5076140060083634.svg"
                   }
                 }
               },

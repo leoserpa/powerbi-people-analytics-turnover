@@ -274,11 +274,13 @@ def gerar_scoring(modelo, X: pd.DataFrame, df_original: pd.DataFrame) -> pd.Data
     df_score = df_original.copy()
     df_score["RiscoSaida_Prob"] = (probabilidades * 100).round(1)
 
-    p33 = np.percentile(probabilidades * 100, 33)
-    p66 = np.percentile(probabilidades * 100, 66)
+    # Thresholds fixos baseados em logica de negocio:
+    # Alto:  >= 40% (risco concreto, accao urgente)
+    # Medio: 20-40% (monitorar, accao preventiva)
+    # Baixo: < 20%  (sem accao imediata)
     df_score["RiscoSaida_Classe"] = pd.cut(
         df_score["RiscoSaida_Prob"],
-        bins=[0, p33, p66, 100],
+        bins=[0, 20, 40, 100],
         labels=["Baixo", "Medio", "Alto"],
         include_lowest=True,
     ).astype("category")
@@ -292,11 +294,11 @@ def gerar_scoring(modelo, X: pd.DataFrame, df_original: pd.DataFrame) -> pd.Data
 
 def exportar_tudo(df_comparacao, df_importance, df_shap, df_scoring, modelo) -> None:
     MODEL_DIR.mkdir(exist_ok=True)
-    df_comparacao.to_csv(OUTPUT_DIR / "ml_comparacao_modelos.csv", index=False)
-    df_importance.to_csv(OUTPUT_DIR / "ml_feature_importance.csv", index=False)
-    df_shap.to_csv(OUTPUT_DIR / "ml_shap_values.csv", index=False)
+    df_comparacao.to_csv(OUTPUT_DIR / "ml_comparacao_modelos.csv", index=False, sep=";")
+    df_importance.to_csv(OUTPUT_DIR / "ml_feature_importance.csv", index=False, sep=";")
+    df_shap.to_csv(OUTPUT_DIR / "ml_shap_values.csv", index=False, sep=";")
     df_scoring.to_parquet(OUTPUT_DIR / "hr_attrition_scored.parquet", index=False)
-    df_scoring.to_csv(OUTPUT_DIR / "hr_attrition_scored.csv", index=False)
+    df_scoring.to_csv(OUTPUT_DIR / "hr_attrition_scored.csv", index=False, sep=";")
     joblib.dump(modelo, MODEL_DIR / "modelo_attrition_optimizado.pkl")
     log.info("Tudo exportado")
 

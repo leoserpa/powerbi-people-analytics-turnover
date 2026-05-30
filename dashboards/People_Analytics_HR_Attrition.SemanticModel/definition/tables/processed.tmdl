@@ -226,6 +226,149 @@ table processed
 		displayFolder: Formatacao
 		lineageTag: 90006236-9908-4783-bc07-f3eab4979123
 
+	/// Cor condicional para grafico de risco por classe: verde escuro na classe com maior probabilidade media, cinza nas restantes.
+	measure 'Cor Destaque RiscoClasse' =
+			VAR ProbActual = AVERAGE(processed[RiscoSaida_Prob])
+			VAR ProbMaxima = MAXX(ALL(processed[RiscoSaida_Classe]), CALCULATE(AVERAGE(processed[RiscoSaida_Prob])))
+			RETURN
+			    IF(ProbActual = ProbMaxima, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 3c0bd313-114c-4dd9-a07e-cefb1d92e6d6
+
+	/// Probabilidade media de saida em formato decimal (0-1) para que o Power BI formate como percentagem correctamente
+	measure 'Prob Media Risco %' = AVERAGE(processed[RiscoSaida_Prob]) / 100
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Risco ML
+		lineageTag: 02856216-6b5f-4346-ac4a-baa215175e85
+
+	/// Cor condicional para grafico de Faixa Salarial: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque FaixaSalarial' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[FaixaSalarial]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: e5cdefdc-8f42-4978-9a10-e87873cc520b
+
+	/// Cor condicional para grafico de Horas Extra: verde escuro na barra com maior turnover, cinza na restante.
+	measure 'Cor Destaque HorasExtra' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[HorasExtra]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 877befee-69cc-4bc9-8fe5-094bf27d420b
+
+	/// Cor condicional para coluna RiscoSaida_Classe na tabela: verde escuro para Alto, cinza para o resto.
+	measure 'Cor Destaque RiscoClasse Tabela' =
+			IF(
+			    MAX(processed[RiscoSaida_Classe]) = "Alto",
+			    "#0B5345",
+			    "#C0C0C0"
+			)
+		displayFolder: Formatacao
+		lineageTag: 579abc5f-09c7-46e8-b5f6-641fd2d8ff9b
+
+	/// Cor da fonte branca para coluna RiscoSaida_Classe na tabela (legivel sobre fundo verde e cinza).
+	measure 'Cor Fonte RiscoClasse Tabela' = "#FFFFFF"
+		displayFolder: Formatacao
+		lineageTag: 151fb4f7-19e2-437d-96bb-43885ae1c5d0
+
+	/// HTML com insights dinamicos para pagina Fatores de Saida - compensacao e condicoes de trabalho
+	measure 'HTML Insights Fatores Saida' =
+			VAR SalarioMedio = [Salario Medio]
+			VAR SalarioSaidas = [Salario Medio Saidas]
+			VAR SalarioFicaram = [Salario Medio Ficaram]
+			VAR GapSalarial = [Gap Salarial Saida %]
+			VAR PctHE = [% Horas Extra]
+			VAR TurnoverHE = CALCULATE([Taxa Turnover %], processed[HorasExtra] = "Sim")
+			VAR TurnoverSemHE = CALCULATE([Taxa Turnover %], processed[HorasExtra] = "Nao")
+			VAR AltoRisco = [Total Alto Risco]
+			VAR FaixaTop = MAXX(TOPN(1, SUMMARIZE(processed, processed[FaixaSalarial], "TX", [Taxa Turnover %]), [TX], DESC), processed[FaixaSalarial])
+			VAR TaxaFaixaTop = MAXX(TOPN(1, SUMMARIZE(processed, processed[FaixaSalarial], "TX", [Taxa Turnover %]), [TX], DESC), [TX])
+			RETURN
+			"<div style='font-family:Segoe UI,sans-serif;padding:10px;line-height:1.7'>
+			<p style='font-size:10px;color:#0B5345;font-weight:700;margin:0 0 6px 0;text-transform:uppercase;letter-spacing:0.5px'>&#128161; Insights - Fatores de Saída</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Quem saiu ganhava em média <b>" & FORMAT(SalarioSaidas, "#,##0") & "</b> vs <b>" & FORMAT(SalarioFicaram, "#,##0") & "</b> de quem ficou</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Gap salarial de <b>" & FORMAT(GapSalarial, "0.0") & "%</b> entre quem sai e quem fica</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Faixa <b>" & FaixaTop & "</b> lidera o turnover com <b>" & FORMAT(TaxaFaixaTop, "0.0") & "%</b></p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Horas extra: <b>" & FORMAT(TurnoverHE, "0.0") & "%</b> de turnover vs <b>" & FORMAT(TurnoverSemHE, "0.0") & "%</b> sem</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; <b>" & AltoRisco & "</b> colaboradores em risco elevado (prob &gt; 40%)</p>
+			<hr style='border:none;border-top:1px solid #E0E0E0;margin:8px 0'>
+			<p style='font-size:9px;color:#999;margin:0'>Dados atualizados com filtros aplicados</p>
+			</div>"
+		displayFolder: Formatacao
+		lineageTag: b46c2646-863d-473b-a875-51840c7c9f53
+
+	/// Percentagem de colaboradores sem stock options (nivel 0)
+	measure '% Sem Opcao de Acoes' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS(processed), processed[NivelOpcaoAccoes] = 0),
+			    COUNTROWS(processed),
+			    0
+			) * 100
+		formatString: 0.0"%"
+		displayFolder: Compensacao
+		lineageTag: de904908-060f-492c-b0af-c24e7ab253a6
+
+	/// Cor condicional para grafico de Nivel de Opcao de Acoes: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque OpcaoAccoes' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[NivelOpcaoAccoes]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 68345ed5-3a29-4a06-8fc2-8938d454feac
+
+	/// Cor condicional para grafico de Faixa de Antiguidade: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque FaixaAntiguidade' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[FaixaAntiguidade]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 777f1190-658c-47a6-8419-2c319d177484
+
+	/// Cor condicional para grafico de Nivel de Cargo: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque NivelCargo' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[NivelCargo]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: f709b861-49c6-4343-96bb-e73849a378c7
+
+	/// Cor condicional para grafico de Frequencia de Viagem: verde escuro na barra com maior turnover, cinza nas restantes.
+	measure 'Cor Destaque FrequenciaViagem' =
+			VAR TurnoverActual = [Taxa Turnover %]
+			VAR TurnoverMaximo = MAXX(ALLSELECTED(processed[FrequenciaViagem]), [Taxa Turnover %])
+			RETURN
+			    IF(TurnoverActual = TurnoverMaximo, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: 52b16a9d-39d4-4c66-b88d-b9abf1fde12c
+
+	/// HTML com insights dinamicos para pagina Carreira e Crescimento
+	measure 'HTML Insights Carreira' =
+			VAR TurnoverSemStock = CALCULATE([Taxa Turnover %], processed[NivelOpcaoAccoes] = 0)
+			VAR TurnoverComStock = CALCULATE([Taxa Turnover %], processed[NivelOpcaoAccoes] > 0)
+			VAR TurnoverNovo = CALCULATE([Taxa Turnover %], processed[FaixaAntiguidade] = "0-2 anos")
+			VAR TurnoverJunior = CALCULATE([Taxa Turnover %], processed[NivelCargo] = 1)
+			VAR TurnoverViaja = CALCULATE([Taxa Turnover %], processed[FrequenciaViagem] = "Viaja Frequentemente")
+			VAR PctSemStock = [% Sem Opcao de Acoes]
+			VAR MediaAnosSemPromo = [Media Anos Sem Promocao]
+			RETURN
+			"<div style='font-family:Segoe UI,sans-serif;padding:10px;line-height:1.7'>
+			<p style='font-size:10px;color:#0B5345;font-weight:700;margin:0 0 6px 0;text-transform:uppercase;letter-spacing:0.5px'>&#128161; Insights - Carreira e Crescimento</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; <b>" & FORMAT(PctSemStock, "0.0") & "%</b> não têm opção de ações (turnover de <b>" & FORMAT(TurnoverSemStock, "0.0") & "%</b> vs <b>" & FORMAT(TurnoverComStock, "0.0") & "%</b> com)</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Colaboradores com <b>0-2 anos</b> têm <b>" & FORMAT(TurnoverNovo, "0.0") & "%</b> de turnover</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Nível 1 (junior): <b>" & FORMAT(TurnoverJunior, "0.0") & "%</b> de saída</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Quem viaja frequentemente: <b>" & FORMAT(TurnoverViaja, "0.0") & "%</b> de turnover</p>
+			<p style='font-size:11px;color:#333;margin:0 0 6px 0'>&#9654; Média de <b>" & FORMAT(MediaAnosSemPromo, "0.0") & "</b> anos sem promoção</p>
+			<p style='font-size:9px;color:#999;margin:8px 0 0 0'>Dados atualizados com filtros aplicados</p>
+			</div>"
+		displayFolder: Formatacao
+		lineageTag: 9b5cf3ad-9d2c-400a-a28c-9d03b9ec8494
+
 	column Idade
 		dataType: int64
 		formatString: 0
@@ -647,6 +790,7 @@ table processed
 
 	column RiscoSaida_Prob
 		dataType: double
+		formatString: #,##0.0"%"
 		lineageTag: f800694c-d520-4108-aaab-6e63233f4d66
 		summarizeBy: sum
 		sourceColumn: RiscoSaida_Prob
@@ -662,6 +806,15 @@ table processed
 		sourceColumn: RiscoSaida_Classe
 
 		annotation SummarizationSetBy = Automatic
+
+	column Risco_Texto = FORMAT(processed[RiscoSaida_Prob], "0.0") & "%"
+		dataType: string
+		lineageTag: b51dcf0f-4457-4d8d-879d-b87818811b49
+
+	column RiscoSaida_Pct = processed[RiscoSaida_Prob] / 100
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f6889cb2-7dd6-41e5-b309-b7a20777442c
 
 	partition processed = m
 		mode: import

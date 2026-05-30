@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "155a220f62776954503e",
+  "position": {
+    "x": 0,
+    "y": 76.971046770601333,
+    "z": 7,
+    "height": 642.85077951002233,
+    "width": 206.68151447661469,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "query": {
+      "queryState": {
+        "content": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "HTML Sobre Modelo"
+                }
+              },
+              "queryRef": "ml_comparacao_modelos.HTML Sobre Modelo",
+              "nativeQueryRef": "HTML Sobre Modelo"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4a299aa1329d0b343a89",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "HTML Sobre Modelo"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

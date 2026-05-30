@@ -8,11 +8,13 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["processed"]
+annotation PBI_QueryOrder = ["processed","ml_feature_importance","ml_comparacao_modelos"]
 
 annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
 ref table processed
+ref table ml_feature_importance
+ref table ml_comparacao_modelos
 
 ref cultureInfo en-US
 

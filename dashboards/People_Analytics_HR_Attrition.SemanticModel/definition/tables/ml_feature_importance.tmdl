@@ -1,0 +1,53 @@
+table ml_feature_importance
+	lineageTag: 310ff2e4-9645-4e75-bc96-9e53acab4cd1
+
+	/// Cor condicional: verde nas 3 features mais importantes, cinza nas restantes
+	measure 'Cor Destaque Feature' =
+			VAR ImportanciaActual = MAX(ml_feature_importance[Importancia])
+			VAR Top3 = TOPN(3, ALL(ml_feature_importance[Feature]), CALCULATE(MAX(ml_feature_importance[Importancia])), DESC)
+			VAR LimiteTop3 = MINX(Top3, CALCULATE(MAX(ml_feature_importance[Importancia])))
+			RETURN
+			    IF(ImportanciaActual >= LimiteTop3, "#0B5345", "#C0C0C0")
+		displayFolder: Formatacao
+		lineageTag: ce96bea5-0cd4-4829-a279-1eba643f8fb5
+
+	column Feature
+		dataType: string
+		lineageTag: a8e6ac73-4853-4687-ad95-160a57283a87
+		summarizeBy: none
+		sourceColumn: Feature
+
+		annotation SummarizationSetBy = Automatic
+
+	column Importancia
+		dataType: double
+		lineageTag: a45d653f-c984-495c-8cf7-020d2a0ead87
+		summarizeBy: sum
+		sourceColumn: Importancia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Importancia_Pct
+		dataType: double
+		lineageTag: fe1dd26b-46db-4191-9665-f3bb253ba9f7
+		summarizeBy: sum
+		sourceColumn: Importancia_Pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ml_feature_importance = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\power bi projeto legado do leo\dados\processed\ml_feature_importance.csv"),[Delimiter=";", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Feature", type text}, {"Importancia", type number}, {"Importancia_Pct", type number}}, "en-US")
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

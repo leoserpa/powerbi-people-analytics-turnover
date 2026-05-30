@@ -59,8 +59,23 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Template_Light_EspacoMax_(15)3678791907243876.svg",
-          "path": "Template_Light_EspacoMax_(15)3678791907243876.svg",
+          "name": "template_visao_geral_de_risco_5076140060083634.svg",
+          "path": "template_visao_geral_de_risco_5076140060083634.svg",
+          "type": "Image"
+        },
+        {
+          "name": "template_modelo_preditivo_(1)6101159154517473.svg",
+          "path": "template_modelo_preditivo_(1)6101159154517473.svg",
+          "type": "Image"
+        },
+        {
+          "name": "template_fatores_de_saida34158441982471643.svg",
+          "path": "template_fatores_de_saida34158441982471643.svg",
+          "type": "Image"
+        },
+        {
+          "name": "template_carreira_e_cresciment0042860392745944775.svg",
+          "path": "template_carreira_e_cresciment0042860392745944775.svg",
           "type": "Image"
         }
       ]

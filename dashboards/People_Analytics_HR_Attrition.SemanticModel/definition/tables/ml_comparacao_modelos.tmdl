@@ -1,0 +1,129 @@
+table ml_comparacao_modelos
+	lineageTag: d3090c0f-7448-4622-a07c-0a69c740619b
+
+	/// AUC-ROC fixo do modelo escolhido
+	measure 'AUC-ROC Modelo' = CALCULATE(MAX(ml_comparacao_modelos[AUC_ROC]), ml_comparacao_modelos[Modelo] = "XGBoost + SMOTE + Optuna")
+		formatString: 0.00
+		displayFolder: KPIs Modelo
+		lineageTag: 628d1789-c218-4852-ac26-98c327961a4a
+
+	/// Recall fixo do modelo escolhido
+	measure 'Recall Modelo' = CALCULATE(MAX(ml_comparacao_modelos[Recall]), ml_comparacao_modelos[Modelo] = "XGBoost + SMOTE + Optuna")
+		formatString: 0.00
+		displayFolder: KPIs Modelo
+		lineageTag: e5532461-fbe5-40b2-b235-1637a0bee066
+
+	/// F1-Score fixo do modelo escolhido
+	measure 'F1 Modelo' = CALCULATE(MAX(ml_comparacao_modelos[F1_Score]), ml_comparacao_modelos[Modelo] = "XGBoost + SMOTE + Optuna")
+		formatString: 0.00
+		displayFolder: KPIs Modelo
+		lineageTag: cf808656-f89f-4e00-af04-5e33e93c8b40
+
+	/// Precision fixo do modelo escolhido
+	measure 'Precision Modelo' = CALCULATE(MAX(ml_comparacao_modelos[Precision]), ml_comparacao_modelos[Modelo] = "XGBoost + SMOTE + Optuna")
+		formatString: 0.00
+		displayFolder: KPIs Modelo
+		lineageTag: 7e36b038-3f6a-47d4-befa-6fb4a747da2f
+
+	/// Cor de fundo para destacar a linha do modelo escolhido (XGBoost + SMOTE + Optuna) na tabela de comparacao
+	measure 'Cor Fundo Modelo Escolhido' = IF(MAX(ml_comparacao_modelos[Modelo]) = "XGBoost + SMOTE + Optuna", "#0B5345", BLANK())
+		displayFolder: Formatacao
+		lineageTag: e42a7c64-e68b-42c5-9f5a-5f5028a8694a
+
+	/// Cor do texto para a linha do modelo escolhido (branco no fundo verde, preto nas outras)
+	measure 'Cor Texto Modelo Escolhido' = IF(MAX(ml_comparacao_modelos[Modelo]) = "XGBoost + SMOTE + Optuna", "#FFFFFF", "#333333")
+		displayFolder: Formatacao
+		lineageTag: 85353884-62aa-4b3e-9b4e-e8397c86b92e
+
+	/// HTML medio com explicacao do modelo - portugues BR correto com acentos
+	measure 'HTML Sobre Modelo' =
+			"<div style='font-family:Segoe UI,sans-serif;padding:12px;line-height:1.7;font-size:11px'>
+			<p style='color:#0B5345;font-weight:700;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:0.5px;font-size:10px'>Sobre o modelo</p>
+			<p style='color:#333;margin:0 0 8px 0'>O modelo escolhido foi o <b>XGBoost + SMOTE + Optuna</b>, priorizando a detecção de colaboradores em risco de saída.</p>
+			<p style='color:#0B5345;font-weight:600;margin:0 0 5px 0'>Por que este modelo?</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; <b>Recall de 61%</b> — detecta 6 em cada 10 saídas reais</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Perder um talento custa <b>1,5x o salário anual</b></p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Um falso alarme (conversar com quem não ia sair) não tem custo</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; SMOTE equilibra as classes (16% saiu vs 84% ficou)</p>
+			<p style='color:#555;margin:0 0 8px 0'>&#9654; Optuna testou 80 combinações de parâmetros automaticamente</p>
+			<p style='color:#0B5345;font-weight:600;margin:0 0 5px 0'>O que o modelo aprendeu?</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Falta de stock options é o fator #1 de saída</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Pressão no trabalho (horas extras + mau equilíbrio) é o #2</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Baixo envolvimento com o cargo é o #3</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; Nenhum fator domina sozinho: turnover é multifatorial</p>
+			<hr style='border:none;border-top:1px solid #E0E0E0;margin:8px 0'>
+			<p style='color:#999;margin:0;font-size:9px'>Algoritmo: XGBoost | Balanceamento: SMOTE | Tuning: Optuna (80 trials) | Validação: 5-fold CV</p>
+			</div>"
+		displayFolder: Formatacao
+		lineageTag: 65e82167-ed2d-4ea5-8c39-418f36608d1c
+
+	column Modelo
+		dataType: string
+		lineageTag: fa6edeb0-38ad-4f2a-83a2-e23c3b52c00f
+		summarizeBy: none
+		sourceColumn: Modelo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accuracy
+		dataType: double
+		lineageTag: 20a584b4-2ad0-429e-886e-61e80af83f51
+		summarizeBy: sum
+		sourceColumn: Accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Precision
+		dataType: double
+		lineageTag: fa31bc3b-ce66-451a-8444-4f4d3197b4bb
+		summarizeBy: sum
+		sourceColumn: Precision
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Recall
+		dataType: double
+		lineageTag: 39eeed3e-0caa-4532-8ffb-12347b087405
+		summarizeBy: sum
+		sourceColumn: Recall
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column F1_Score
+		dataType: double
+		lineageTag: d5f8ce0d-bfc9-450d-ada4-6c35eada0aff
+		summarizeBy: sum
+		sourceColumn: F1_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AUC_ROC
+		dataType: double
+		lineageTag: a932a69d-2867-459c-9a5b-72ece951e85f
+		summarizeBy: sum
+		sourceColumn: AUC_ROC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ml_comparacao_modelos = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\power bi projeto legado do leo\dados\processed\ml_comparacao_modelos.csv"),[Delimiter=";", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Modelo", type text}, {"Accuracy", type number}, {"Precision", type number}, {"Recall", type number}, {"F1_Score", type number}, {"AUC_ROC", type number}}, "en-US")
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

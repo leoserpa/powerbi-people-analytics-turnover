@@ -186,6 +186,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OutsideEnd'"
+                }
+              }
             }
           }
         }

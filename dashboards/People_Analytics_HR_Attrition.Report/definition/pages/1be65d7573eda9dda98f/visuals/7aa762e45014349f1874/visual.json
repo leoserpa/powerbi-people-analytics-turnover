@@ -1,0 +1,542 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "7aa762e45014349f1874",
+  "position": {
+    "x": 756.88195991091311,
+    "y": 450.42316258351894,
+    "z": 1,
+    "height": 249.44320712694878,
+    "width": 504.58797327394211,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "Modelo"
+                }
+              },
+              "queryRef": "ml_comparacao_modelos.Modelo",
+              "nativeQueryRef": "Modelo1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "AUC_ROC"
+                }
+              },
+              "queryRef": "Sum(ml_comparacao_modelos.AUC_ROC)",
+              "nativeQueryRef": "AUC_ROC",
+              "format": "0.0%;-0.0%;0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "Recall"
+                }
+              },
+              "queryRef": "Sum(ml_comparacao_modelos.Recall)",
+              "nativeQueryRef": "Recall",
+              "format": "0.0%;-0.0%;0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "F1_Score"
+                }
+              },
+              "queryRef": "Sum(ml_comparacao_modelos.F1_Score)",
+              "nativeQueryRef": "F1_Score",
+              "format": "0.0%;-0.0%;0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_comparacao_modelos"
+                    }
+                  },
+                  "Property": "Precision"
+                }
+              },
+              "queryRef": "Sum(ml_comparacao_modelos.Precision)",
+              "nativeQueryRef": "Precision",
+              "format": "0.0%;-0.0%;0.0%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ml_comparacao_modelos"
+                  }
+                },
+                "Property": "Modelo"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "236.5805560930829D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ml_comparacao_modelos.Modelo"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.4253897778066D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(ml_comparacao_modelos.AUC_ROC)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.25389653918218D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(ml_comparacao_modelos.Recall)"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A0A0A0'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A0A0A0'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Fundo Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Texto Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "ml_comparacao_modelos.Modelo"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Fundo Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Texto Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(ml_comparacao_modelos.AUC_ROC)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Fundo Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Texto Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(ml_comparacao_modelos.Recall)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Fundo Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Texto Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(ml_comparacao_modelos.F1_Score)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Fundo Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_comparacao_modelos"
+                        }
+                      },
+                      "Property": "Cor Texto Modelo Escolhido"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(ml_comparacao_modelos.Precision)"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sparse'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "202130e9fbe8eb6327ef",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "AUC_ROC"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a7e9ca74791bd9f955dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "F1_Score"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c1a54c6dc207149cc010",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "Precision"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3011cf78a44c78e1f695",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "Modelo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f09ac5ba2d1dee4798e6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ml_comparacao_modelos"
+              }
+            },
+            "Property": "Recall"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

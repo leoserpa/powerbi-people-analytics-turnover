@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatores de Saída - Template Power BI</title>
+    <!-- Fonte limpa, estilo dashboard analítico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: #0B5345;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(11, 83, 69, 0.1), 0 2px 4px -1px rgba(11, 83, 69, 0.06);
+        }
+
+        .btn:hover {
+            background: #073C31;
+            box-shadow: 0 10px 15px -3px rgba(11, 83, 69, 0.2), 0 4px 6px -4px rgba(11, 83, 69, 0.2);
+        }
+
+        .preview-wrapper {
+            position: relative;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .preview-canvas {
+            display: block;
+            width: 100%;
+            max-width: 1280px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-section">
+        <h1>Template - Fatores de Saída</h1>
+        <p class="tagline">Gerador de Template de Background para Power BI</p>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="downloadSVG()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Exportar SVG (Espaço Máximo)
+        </button>
+    </div>
+
+    <div class="preview-wrapper">
+        <svg id="pbi-template" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+            <!-- Efeito de Sombra para dar profundidade aos cartões -->
+            <defs>
+                <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.04" />
+                </filter>
+                <clipPath id="clip-card-1">
+                    <rect x="220" y="70" width="255" height="90" rx="8" />
+                </clipPath>
+                <clipPath id="clip-card-2">
+                    <rect x="485" y="70" width="255" height="90" rx="8" />
+                </clipPath>
+                <clipPath id="clip-card-3">
+                    <rect x="750" y="70" width="255" height="90" rx="8" />
+                </clipPath>
+                <clipPath id="clip-card-4">
+                    <rect x="1015" y="70" width="255" height="90" rx="8" />
+                </clipPath>
+            </defs>
+
+            <!-- Background do Canvas Principal -->
+            <rect width="1280" height="720" fill="#f3f4f6" />
+
+            <!-- Barra Lateral Esquerda (Sidebar: Largura 210) -->
+            <rect x="0" y="0" width="210" height="720" fill="#ffffff" />
+            <line x1="210" y1="0" x2="210" y2="720" stroke="#e5e7eb" stroke-width="1" />
+
+            <!-- Header da Barra Lateral (Ícone de People Analytics Customizado) -->
+            <g>
+                <!-- Fundo do ícone (Rounded Square no tom verde do painel) -->
+                <rect x="15" y="21" width="26" height="26" rx="6" fill="#0B5345" />
+                <!-- Ícone de Pessoas + Analytics em Branco (Traços Finos e Elegantes) -->
+                <g stroke="#ffffff" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                    transform="translate(15, 21)">
+                    <g transform="translate(4, 4)">
+                        <!-- Silhueta Humana Simplificada -->
+                        <circle cx="6" cy="5" r="2.5" />
+                        <path d="M1 15v-1a2.5 2.5 0 0 1 2.5-2.5h5A2.5 2.5 0 0 1 11 14v1" />
+                        <!-- Duas barras crescentes (Analytics) -->
+                        <line x1="14" y1="15" x2="14" y2="8" />
+                        <line x1="17" y1="15" x2="17" y2="4" />
+                    </g>
+                </g>
+            </g>
+            <text x="50" y="39" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#1f2937">People
+                Analytics</text>
+            <line x1="15" y1="70" x2="195" y2="70" stroke="#e5e7eb" stroke-width="1" />
+
+            <!-- Guias para os Segmentadores (Igual ao P3) -->
+            <text x="15" y="120" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280"
+                text-transform="uppercase" letter-spacing="1">Departamento</text>
+
+            <text x="15" y="200" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280"
+                text-transform="uppercase" letter-spacing="1">Cargo</text>
+
+            <text x="15" y="280" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#6b7280"
+                text-transform="uppercase" letter-spacing="1">Nível de Risco</text>
+
+            <line x1="15" y1="360" x2="195" y2="360" stroke="#e5e7eb" stroke-width="1" />
+
+
+
+            <!-- Botão de Limpar Filtros (Base no Template) -->
+            <rect x="15" y="650" width="180" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1" />
+
+            <!-- Top Header Area (Altura: 60) -->
+            <rect x="210" y="0" width="1070" height="60" fill="#ffffff" />
+            <line x1="210" y1="60" x2="1280" y2="60" stroke="#e5e7eb" stroke-width="1" />
+
+            <!-- Cabeçalho Tipográfico Minimalista (Estilo Tufte / Modern SaaS) -->
+            <g>
+                <!-- Categoria Superior Fina -->
+                <text x="230" y="24" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0B5345"
+                    letter-spacing="1.5">DASHBOARD ANALÍTICO</text>
+                <!-- Título Principal Sólido e Elegante -->
+                <text x="230" y="45" font-family="Inter, sans-serif" font-size="19" font-weight="600" fill="#1f2937"
+                    letter-spacing="-0.3">Fatores de Saída</text>
+            </g>
+
+            <!-- ==============================
+                 KPIs (Cards) - Y: 70, H: 90
+                 Largura: 255
+                 ============================== -->
+
+            <!-- Card 1: Salário Médio -->
+            <rect x="220" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="220" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-1)" />
+            <text x="235" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280"
+                letter-spacing="0.5">SALÁRIO MÉDIO</text>
+            <g transform="translate(435, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </g>
+
+            <!-- Card 2: Gap Salarial Saída % -->
+            <rect x="485" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="485" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-2)" />
+            <text x="500" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280"
+                letter-spacing="0.5">GAP SALARIAL SAÍDA %</text>
+            <g transform="translate(700, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="4" y1="8" x2="20" y2="8" />
+                <line x1="4" y1="16" x2="20" y2="16" />
+                <polyline points="12 5 12 19" />
+                <polyline points="9 8 12 5 15 8" />
+                <polyline points="9 16 12 19 15 16" />
+            </g>
+
+            <!-- Card 3: % Horas Extra -->
+            <rect x="750" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="750" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-3)" />
+            <text x="765" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280"
+                letter-spacing="0.5">% HORAS EXTRA</text>
+            <g transform="translate(965, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 14" />
+                <line x1="18" y1="6" x2="22" y2="6" stroke-width="1.5" />
+                <line x1="20" y1="4" x2="20" y2="8" stroke-width="1.5" />
+            </g>
+
+            <!-- Card 4: Total Alto Risco -->
+            <rect x="1015" y="70" width="255" height="90" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+            <!-- Detalhe Verde Horizontal Perfeito (Clipped para seguir os cantos arredondados) -->
+            <rect x="1015" y="70" width="255" height="4" fill="#0B5345" clip-path="url(#clip-card-4)" />
+            <text x="1030" y="98" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b7280"
+                letter-spacing="0.5">TOTAL ALTO RISCO</text>
+            <g transform="translate(1230, 83)" stroke="#9ca3af" fill="none" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </g>
+
+            <!-- ==============================
+                 Área de Gráficos - Layout Horizontal Premium
+                 Topo: 1 Gráfico Estendido (W: 1050, H: 265)
+                 Base: 2 Gráficos de Apoio (W: 520, H: 265)
+                 ============================== -->
+
+            <!-- Topo: 1 Gráfico Estendido Grande -->
+            <rect x="220" y="170" width="1050" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+
+            <!-- Base: 2 Gráficos de Apoio do Mesmo Tamanho -->
+            <!-- 1. Inferior Esquerdo -->
+            <rect x="220" y="445" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+
+            <!-- 2. Inferior Direito -->
+            <rect x="750" y="445" width="520" height="265" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"
+                filter="url(#shadow)" />
+
+        </svg>
+    </div>
+
+    <script>
+        function downloadSVG() {
+            const svgElement = document.getElementById('pbi-template');
+            const serializer = new XMLSerializer();
+            let svgString = serializer.serializeToString(svgElement);
+
+            if (!svgString.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+                svgString = svgString.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+            }
+
+            const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'template_fatores_de_saida.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+
+</html>
