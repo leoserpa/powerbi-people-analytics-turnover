@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 286.79341362501884,
-    "z": 10,
+    "z": 10000,
     "height": 48.027605152515122,
     "width": 193.48263790013235,
-    "tabOrder": 10
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "slicer",
@@ -96,23 +96,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "fbda23b48a7d07079ad3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "HorasExtra"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

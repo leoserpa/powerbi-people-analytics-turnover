@@ -41,7 +41,7 @@ table ml_comparacao_modelos
 			<p style='color:#0B5345;font-weight:700;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:0.5px;font-size:10px'>Sobre o modelo</p>
 			<p style='color:#333;margin:0 0 8px 0'>O modelo escolhido foi o <b>XGBoost + SMOTE + Optuna</b>, priorizando a detecção de colaboradores em risco de saída.</p>
 			<p style='color:#0B5345;font-weight:600;margin:0 0 5px 0'>Por que este modelo?</p>
-			<p style='color:#555;margin:0 0 4px 0'>&#9654; <b>Recall de 61%</b> — detecta 6 em cada 10 saídas reais</p>
+			<p style='color:#555;margin:0 0 4px 0'>&#9654; <b>Recall de 60,8%</b>: detecta 6 em cada 10 saídas reais</p>
 			<p style='color:#555;margin:0 0 4px 0'>&#9654; Perder um talento custa <b>1,5x o salário anual</b></p>
 			<p style='color:#555;margin:0 0 4px 0'>&#9654; Um falso alarme (conversar com quem não ia sair) não tem custo</p>
 			<p style='color:#555;margin:0 0 4px 0'>&#9654; SMOTE equilibra as classes (16% saiu vs 84% ficou)</p>

@@ -206,37 +206,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d12e191dee8bc18ff708",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "HorasExtra"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8d59f9bc905a270c14a4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -121,7 +121,7 @@ def grafico_roc_curve(X, y):
 
 def grafico_feature_importance():
     """Top 10 features mais importantes."""
-    df_imp = pd.read_csv(IMPORTANCE_FILE).head(10)
+    df_imp = pd.read_csv(IMPORTANCE_FILE, sep=";").head(10)
 
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.barplot(data=df_imp, x="Importancia_Pct", y="Feature", ax=ax, color=CORES["secundaria"])
@@ -136,7 +136,7 @@ def grafico_feature_importance():
 
 def grafico_comparacao_modelos():
     """Comparacao de metricas entre modelos."""
-    df_comp = pd.read_csv(COMPARACAO_FILE)
+    df_comp = pd.read_csv(COMPARACAO_FILE, sep=";")
 
     fig, ax = plt.subplots(figsize=(9, 5))
     metricas = ["Accuracy", "Precision", "Recall", "F1_Score", "AUC_ROC"]

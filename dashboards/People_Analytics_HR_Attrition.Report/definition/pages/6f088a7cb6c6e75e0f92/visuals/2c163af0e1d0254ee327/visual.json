@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 124.87177339653931,
-    "z": 8,
+    "z": 8000,
     "height": 48.027605152515122,
     "width": 193.48263790013235,
-    "tabOrder": 8
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "slicer",
@@ -96,23 +96,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a8b8ab2130eb33363aa8",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Departamento"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

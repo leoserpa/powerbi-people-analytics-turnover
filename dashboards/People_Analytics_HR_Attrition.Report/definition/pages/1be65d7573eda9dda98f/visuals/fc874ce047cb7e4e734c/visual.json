@@ -326,25 +326,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "f087f23a8d5ef8c1ba12",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "ml_feature_importance"
-                  }
-                },
-                "Property": "Importancia"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

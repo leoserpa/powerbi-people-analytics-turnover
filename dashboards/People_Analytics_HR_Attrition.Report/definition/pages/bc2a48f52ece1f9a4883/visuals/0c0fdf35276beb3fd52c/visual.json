@@ -4,10 +4,10 @@
   "position": {
     "x": 757.46394411966708,
     "y": 94.682993014958384,
-    "z": 2,
+    "z": 2000,
     "height": 60.377560763161867,
     "width": 241.51024305264747,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4784f8b6b82a8729afbb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Total Saidas"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

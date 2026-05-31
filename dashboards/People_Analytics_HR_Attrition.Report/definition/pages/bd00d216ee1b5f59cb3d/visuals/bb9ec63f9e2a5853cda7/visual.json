@@ -4,10 +4,10 @@
   "position": {
     "x": 493.43421913863068,
     "y": 95.308810053671934,
-    "z": 4,
+    "z": 4000,
     "height": 60.3220316795392,
     "width": 241.2881267181568,
-    "tabOrder": 4
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "be3bc6e420e9c51483bd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Gap Salarial Saida %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

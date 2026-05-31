@@ -4,10 +4,10 @@
   "position": {
     "x": 223.67141828171327,
     "y": 450.08727114357026,
-    "z": 1,
+    "z": 1000,
     "height": 248.37132950300676,
     "width": 511.837049196804,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "columnChart",
@@ -206,37 +206,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "afba8568f8de9f175aba",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "FaixaSalarial"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8c2ff0644f151a91b358",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

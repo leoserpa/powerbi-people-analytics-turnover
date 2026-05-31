@@ -4,10 +4,10 @@
   "position": {
     "x": 223.67141828171327,
     "y": 172.89937854905443,
-    "z": 4,
+    "z": 4000,
     "height": 253.8601986632942,
     "width": 511.837049196804,
-    "tabOrder": 4
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "donutChart",
@@ -274,37 +274,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f0661d87809b191a5e48",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "RiscoSaida_Classe"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "d45989fc97b5d5f16983",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Total Colaboradores"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

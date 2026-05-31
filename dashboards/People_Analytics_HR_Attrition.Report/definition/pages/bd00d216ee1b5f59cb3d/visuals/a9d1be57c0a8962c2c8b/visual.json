@@ -4,10 +4,10 @@
   "position": {
     "x": 757.46394411966708,
     "y": 94.682993014958384,
-    "z": 5,
+    "z": 5000,
     "height": 60.377560763161867,
     "width": 241.51024305264747,
-    "tabOrder": 5
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1a83b9b1c4fcf2938e5e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "% Horas Extra"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

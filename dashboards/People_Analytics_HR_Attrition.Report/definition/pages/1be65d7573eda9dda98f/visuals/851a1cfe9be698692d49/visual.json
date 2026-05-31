@@ -4,10 +4,10 @@
   "position": {
     "x": 1020.9296638134642,
     "y": 94.682993014958384,
-    "z": 5,
+    "z": 5000,
     "height": 60.377560763161867,
     "width": 241.51024305264747,
-    "tabOrder": 5
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -142,23 +142,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "693cc529e678f08538ea",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "ml_comparacao_modelos"
-              }
-            },
-            "Property": "Precision Modelo"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

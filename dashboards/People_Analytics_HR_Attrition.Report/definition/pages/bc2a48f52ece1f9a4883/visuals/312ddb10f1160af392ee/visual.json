@@ -4,10 +4,10 @@
   "position": {
     "x": 757.46394411966708,
     "y": 448.71505385349843,
-    "z": 6,
+    "z": 6000,
     "height": 253.8601986632942,
     "width": 504.97596274644468,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -226,37 +226,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "be893cc27dd58be3eae7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "FaixaEtaria"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "56f58c8ed788a59d9d4d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

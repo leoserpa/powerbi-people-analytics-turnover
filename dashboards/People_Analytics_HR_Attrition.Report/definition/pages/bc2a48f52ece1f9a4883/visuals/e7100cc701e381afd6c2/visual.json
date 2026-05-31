@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f6819e03448df1342bc2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

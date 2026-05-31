@@ -4,10 +4,10 @@
   "position": {
     "x": 223.67141828171327,
     "y": 172.89937854905443,
-    "z": 2,
+    "z": 2000,
     "height": 256.60463324343795,
     "width": 1038.7684885843985,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "tableEx",
@@ -101,10 +101,10 @@
                     "Entity": "processed"
                   }
                 },
-                "Property": "RiscoSaida_Pct"
+                "Property": "RiscoSaida_Classe"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -391,7 +391,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b4a4aa6a550e960a426d",
+        "name": "7c6c8bb58b2a5319be3e",
         "field": {
           "Column": {
             "Expression": {
@@ -405,7 +405,7 @@
         "type": "Categorical"
       },
       {
-        "name": "5785ac715a4cf0b239f2",
+        "name": "df2f0ca307c803b5401b",
         "field": {
           "Column": {
             "Expression": {
@@ -419,7 +419,7 @@
         "type": "Categorical"
       },
       {
-        "name": "aeea7be7d9074500c88a",
+        "name": "4be71c0f3e0c09c02447",
         "field": {
           "Column": {
             "Expression": {
@@ -433,7 +433,7 @@
         "type": "Advanced"
       },
       {
-        "name": "1d7cdebd840360b5d406",
+        "name": "aa77837fde05a37cc270",
         "field": {
           "Column": {
             "Expression": {
@@ -447,7 +447,7 @@
         "type": "Advanced"
       },
       {
-        "name": "26ee558d20ceab067a43",
+        "name": "c059fcb55eb670300b70",
         "field": {
           "Column": {
             "Expression": {

@@ -4,10 +4,10 @@
   "position": {
     "x": 756.88195991091311,
     "y": 175.32293986636972,
-    "z": 6,
+    "z": 6000,
     "height": 248.01781737193764,
     "width": 504.58797327394211,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -234,37 +234,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "67d75cdeb8e01b79b486",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "RiscoSaida_Classe"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f966d675170d0d7fe376",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Prob Media Risco %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

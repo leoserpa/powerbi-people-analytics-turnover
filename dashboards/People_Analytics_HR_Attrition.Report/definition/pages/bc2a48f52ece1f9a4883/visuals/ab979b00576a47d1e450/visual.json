@@ -4,10 +4,10 @@
   "position": {
     "x": 1.3722172900718606,
     "y": 371.87088560947421,
-    "z": 11,
+    "z": 11000,
     "height": 253.8601986632942,
     "width": 207.20481080085094,
-    "tabOrder": 11
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
@@ -34,23 +34,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b8fb4e9bb192bbf3c620",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "HTML Insights Dashboard"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -4,10 +4,10 @@
   "position": {
     "x": 223.67141828171327,
     "y": 448.71505385349843,
-    "z": 7,
+    "z": 7000,
     "height": 253.8601986632942,
     "width": 511.837049196804,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -226,37 +226,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f8f63d9804b2ea65c947",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Departamento"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9ca52c4b55bee6a820bc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

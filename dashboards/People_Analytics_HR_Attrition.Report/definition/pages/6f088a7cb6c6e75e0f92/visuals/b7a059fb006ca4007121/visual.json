@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 205.83259351077908,
-    "z": 9,
+    "z": 9000,
     "height": 48.027605152515122,
     "width": 193.48263790013235,
-    "tabOrder": 9
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "slicer",
@@ -96,23 +96,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1bf909f10420669ba96e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Cargo"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

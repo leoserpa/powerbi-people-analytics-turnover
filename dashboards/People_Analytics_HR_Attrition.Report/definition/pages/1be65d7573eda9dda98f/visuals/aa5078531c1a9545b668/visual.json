@@ -4,10 +4,10 @@
   "position": {
     "x": 493.43421913863068,
     "y": 95.308810053671934,
-    "z": 3,
+    "z": 3000,
     "height": 60.3220316795392,
     "width": 241.2881267181568,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -142,23 +142,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a52d170b009a385e4d6b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "ml_comparacao_modelos"
-              }
-            },
-            "Property": "Recall Modelo"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

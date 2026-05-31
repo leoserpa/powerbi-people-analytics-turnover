@@ -1,0 +1,224 @@
+<svg id="pbi-template" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+            <!-- Efeito de Sombra para os Cartões de Navegação -->
+            <defs>
+                <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.04"/>
+                </filter>
+                <clipPath id="clip-home-card-1">
+                    <rect x="250" y="210" width="475" height="210" rx="10"/>
+                </clipPath>
+                <clipPath id="clip-home-card-2">
+                    <rect x="755" y="210" width="475" height="210" rx="10"/>
+                </clipPath>
+                <clipPath id="clip-home-card-3">
+                    <rect x="250" y="450" width="475" height="210" rx="10"/>
+                </clipPath>
+                <clipPath id="clip-home-card-4">
+                    <rect x="755" y="450" width="475" height="210" rx="10"/>
+                </clipPath>
+            </defs>
+
+            <!-- Background do Canvas Principal -->
+            <rect width="1280" height="720" fill="#f3f4f6"/>
+
+            <!-- Barra Lateral Esquerda (Sidebar: Largura 210) -->
+            <rect x="0" y="0" width="210" height="720" fill="#ffffff"/>
+            <line x1="210" y1="0" x2="210" y2="720" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Header da Barra Lateral (Ícone de People Analytics Customizado) -->
+            <g>
+                <!-- Fundo do ícone (Rounded Square no tom verde do painel) -->
+                <rect x="15" y="21" width="26" height="26" rx="6" fill="#0B5345"/>
+                <!-- Ícone de Pessoas + Analytics em Branco -->
+                <g stroke="#ffffff" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(15, 21)">
+                    <g transform="translate(4, 4)">
+                        <!-- Silhueta Humana Simplificada -->
+                        <circle cx="6" cy="5" r="2.5"/>
+                        <path d="M1 15v-1a2.5 2.5 0 0 1 2.5-2.5h5A2.5 2.5 0 0 1 11 14v1"/>
+                        <!-- Duas barras crescentes (Analytics) -->
+                        <line x1="14" y1="15" x2="14" y2="8"/>
+                        <line x1="17" y1="15" x2="17" y2="4"/>
+                    </g>
+                </g>
+            </g>
+            <text x="50" y="39" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#1f2937">People
+                Analytics</text>
+            <line x1="15" y1="70" x2="195" y2="70" stroke="#e5e7eb" stroke-width="1"/>
+
+            <!-- Guia Informativa na Lateral -->
+            <g>
+                <text x="15" y="120" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#0B5345" text-transform="uppercase" letter-spacing="1">MENU PRINCIPAL</text>
+                <text x="15" y="150" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="#4b5563">
+                    <tspan x="15" dy="0">Central de People Analytics</tspan>
+                    <tspan x="15" dy="18">para predição de turnover.</tspan>
+                    <tspan x="15" dy="18">Use os módulos ao lado</tspan>
+                    <tspan x="15" dy="18">para navegar entre as</tspan>
+                    <tspan x="15" dy="18">quatro visões do painel.</tspan>
+                </text>
+            </g>
+
+
+            <!-- ==============================
+                 HERO SECTION (Boas-vindas)
+                 ============================== -->
+            <g>
+                <!-- Categoria Superior Fina -->
+                <text x="250" y="90" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#0B5345" letter-spacing="2">INÍCIO</text>
+                <!-- Título Principal Sólido e Elegante -->
+                <text x="250" y="130" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#1f2937" letter-spacing="-0.5">People Analytics Hub</text>
+                <!-- Subtítulo / Tagline -->
+                <text x="250" y="160" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#6b7280">Selecione um módulo para explorar os indicadores de turnover dos 1.470
+                    colaboradores.</text>
+            </g>
+
+            <!-- ==============================
+                 CARDS DE PORTAL (2x2)
+                 ============================== -->
+
+            <!-- CARD 1: Visão Geral de Risco -->
+            <g>
+                <!-- Card Base -->
+                <rect x="250" y="210" width="475" height="210" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+                <!-- Accent Line -->
+                <rect x="250" y="210" width="475" height="4" fill="#0B5345" clip-path="url(#clip-home-card-1)"/>
+
+                <!-- Badge Circular do Ícone -->
+                <circle cx="300" cy="275" r="26" fill="#0B5345" opacity="0.08"/>
+                <!-- Ícone Gauge/Speedometer -->
+                <g stroke="#0B5345" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(286, 261)">
+                    <path d="M2 17a10 10 0 1 1 20 0"/>
+                    <line x1="12" y1="17" x2="17" y2="8"/>
+                </g>
+
+                <!-- Textos do Card -->
+                <text x="345" y="270" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1f2937">1.
+                    Visão Geral de Risco</text>
+
+                <!-- Descrição Curta (Multi-line) -->
+                <text x="345" y="295" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#6b7280">
+                    <tspan x="345" dy="0">Taxa de turnover, saídas e alto risco, com distribuição</tspan>
+                    <tspan x="345" dy="18">por cargo, departamento e faixa etária.</tspan>
+                </text>
+
+
+                <!-- Seta do Indicador -->
+                <g stroke="#0B5345" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(445, 365)">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </g>
+            </g>
+
+            <!-- CARD 2: Carreira e Crescimento -->
+            <g>
+                <!-- Card Base -->
+                <rect x="755" y="210" width="475" height="210" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+                <!-- Accent Line -->
+                <rect x="755" y="210" width="475" height="4" fill="#0B5345" clip-path="url(#clip-home-card-2)"/>
+
+                <!-- Badge Circular do Ícone -->
+                <circle cx="805" cy="275" r="26" fill="#0B5345" opacity="0.08"/>
+                <!-- Ícone Porta de Saída -->
+                <g stroke="#0B5345" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(791, 261)">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </g>
+
+                <!-- Textos do Card -->
+                <text x="850" y="270" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1f2937">2.
+                    Fatores de Saída</text>
+
+                <!-- Descrição Curta (Multi-line) -->
+                <text x="850" y="295" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#6b7280">
+                    <tspan x="850" dy="0">Salário médio, gap salarial, faixa salarial e horas extras</tspan>
+                    <tspan x="850" dy="18">versus turnover, com tabela de risco por cargo.</tspan>
+                </text>
+
+
+                <!-- Seta do Indicador -->
+                <g stroke="#0B5345" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(950, 365)">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </g>
+            </g>
+
+            <!-- CARD 3: Modelo Preditivo -->
+            <g>
+                <!-- Card Base -->
+                <rect x="250" y="450" width="475" height="210" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+                <!-- Accent Line -->
+                <rect x="250" y="450" width="475" height="4" fill="#0B5345" clip-path="url(#clip-home-card-3)"/>
+
+                <!-- Badge Circular do Ícone -->
+                <circle cx="300" cy="515" r="26" fill="#0B5345" opacity="0.08"/>
+                <!-- Ícone Escada de Crescimento -->
+                <g stroke="#0B5345" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(286, 501)">
+                    <path d="M4 22h16v-4h-4v-4h-4v-4H8V6H4v16z"/>
+                    <line x1="16" y1="6" x2="21" y2="6"/>
+                </g>
+
+                <!-- Textos do Card -->
+                <text x="345" y="510" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1f2937">3.
+                    Carreira e Crescimento</text>
+
+                <!-- Descrição Curta (Multi-line) -->
+                <text x="345" y="535" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#6b7280">
+                    <tspan x="345" dy="0">Turnover por antiguidade, stock options, nível hierárquico</tspan>
+                    <tspan x="345" dy="18">e frequência de viagem como fatores de retenção.</tspan>
+                </text>
+
+
+                <!-- Seta do Indicador -->
+                <g stroke="#0B5345" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(445, 605)">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </g>
+            </g>
+
+            <!-- CARD 4: Fatores de Saída -->
+            <g>
+                <!-- Card Base -->
+                <rect x="755" y="450" width="475" height="210" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+                <!-- Accent Line -->
+                <rect x="755" y="450" width="475" height="4" fill="#0B5345" clip-path="url(#clip-home-card-4)"/>
+
+                <!-- Badge Circular do Ícone -->
+                <circle cx="805" cy="515" r="26" fill="#0B5345" opacity="0.08"/>
+                <!-- Ícone Rede Conectada / IA -->
+                <g stroke="#0B5345" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(791, 501)">
+                    <circle cx="12" cy="5" r="3"/>
+                    <circle cx="5" cy="12" r="3"/>
+                    <circle cx="19" cy="12" r="3"/>
+                    <circle cx="12" cy="19" r="3"/>
+                    <line x1="12" y1="8" x2="5" y2="12"/>
+                    <line x1="12" y1="8" x2="19" y2="12"/>
+                    <line x1="5" y1="12" x2="12" y2="16"/>
+                    <line x1="19" y1="12" x2="12" y2="16"/>
+                </g>
+
+                <!-- Textos do Card -->
+                <text x="850" y="510" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1f2937">4.
+                    Modelo Preditivo</text>
+
+                <!-- Descrição Curta (Multi-line) -->
+                <text x="850" y="535" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#6b7280">
+                    <tspan x="850" dy="0">Métricas do modelo (AUC-ROC, recall), top 10 fatores</tspan>
+                    <tspan x="850" dy="18">de saída e probabilidade de risco por classe.</tspan>
+                </text>
+
+
+                <!-- Seta do Indicador -->
+                <g stroke="#0B5345" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(950, 605)">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </g>
+            </g>
+
+            <!-- Rodapé Geral do Projeto (Centralizado no Conteúdo Principal) -->
+            <g>
+                <text x="740" y="688" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#9ca3af" letter-spacing="1" text-anchor="middle">PROJETO DE DATA SCIENCE | DATASET HISTÓRICO: IBM HR
+                    ANALYTICS EMPLOYEE ATTRITION &amp; PERFORMANCE</text>
+                <text x="740" y="704" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle">Desenvolvido por Leonardo Serpa | Versão v1.0.0 | 2026</text>
+            </g>
+
+        </svg>

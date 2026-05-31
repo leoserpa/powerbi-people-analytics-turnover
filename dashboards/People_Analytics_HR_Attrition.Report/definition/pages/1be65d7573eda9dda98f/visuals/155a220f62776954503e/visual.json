@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 76.971046770601333,
-    "z": 7,
+    "z": 7000,
     "height": 642.85077951002233,
     "width": 206.68151447661469,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
@@ -38,7 +38,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4a299aa1329d0b343a89",
+        "name": "834ea2e555e146ad1076",
         "field": {
           "Measure": {
             "Expression": {

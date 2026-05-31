@@ -4,10 +4,10 @@
   "position": {
     "x": 223.67141828171327,
     "y": 450.08727114357026,
-    "z": 6,
+    "z": 6000,
     "height": 252.48798137322234,
     "width": 500.85931087622913,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "columnChart",
@@ -227,37 +227,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3edb9cb9d00550611c08",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "NivelCargo"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ff31552f0208bdaeab51",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Taxa Turnover %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

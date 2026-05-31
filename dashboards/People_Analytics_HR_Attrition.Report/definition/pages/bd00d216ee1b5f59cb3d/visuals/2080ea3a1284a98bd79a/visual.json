@@ -4,10 +4,10 @@
   "position": {
     "x": 232.84304228302133,
     "y": 95.308810053671934,
-    "z": 3,
+    "z": 3000,
     "height": 60.3220316795392,
     "width": 237.66880481738445,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "47081062180f10a968bb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "Salario Medio"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

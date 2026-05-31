@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 385.5930585101928,
-    "z": 11,
+    "z": 11000,
     "height": 234.64915660228817,
     "width": 208.57702809092279,
-    "tabOrder": 10
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
@@ -34,23 +34,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d1b89633cb4c5b82e082",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "processed"
-              }
-            },
-            "Property": "HTML Insights Fatores Saida"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

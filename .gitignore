@@ -1,18 +1,15 @@
 # Kiro
 .kiro/
 
-# Documentacao (adicionar ao repo quando projecto estiver finalizado)
-README.md
-docs/dicionario_dados.md
+# IDE
+.vscode/
+.idea/
 
 # Python
 __pycache__/
 *.pyc
 .venv/
 venv/
-
-# Modelos grandes (opcional: descomenta se nao quiseres no repo)
-# models/*.pkl
 
 # Power BI ficheiros temporarios
 *.pbix
@@ -24,7 +21,3 @@ dashboards/**/localSettings.json
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# IDE
-.vscode/
-.idea/
