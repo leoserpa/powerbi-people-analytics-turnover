@@ -2,7 +2,7 @@
 
 **Português** | [English](README.en.md)
 
-![versão](https://img.shields.io/badge/versão-v1.0.0-blueviolet?style=flat-square)
+![versão](https://img.shields.io/badge/versão-v1.0.1-blueviolet?style=flat-square)
 ![status](https://img.shields.io/badge/status-Finalizado-2ECC71?style=flat-square)
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![DAX](https://img.shields.io/badge/DAX-Cálculos--Analíticos-4F9DE0?style=flat-square)

@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'template_pagina_inicial (5).svg'"
+                    "Value": "'template_pagina_inicial (6).svg'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "template_pagina_inicial_(5)5007532721848983.svg"
+                    "ItemName": "template_pagina_inicial_(6)913632593544614.svg"
                   }
                 }
               },

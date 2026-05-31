@@ -31,7 +31,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           }
@@ -79,8 +79,8 @@
           "type": "Image"
         },
         {
-          "name": "template_pagina_inicial_(5)5007532721848983.svg",
-          "path": "template_pagina_inicial_(5)5007532721848983.svg",
+          "name": "template_pagina_inicial_(6)913632593544614.svg",
+          "path": "template_pagina_inicial_(6)913632593544614.svg",
           "type": "Image"
         }
       ]
